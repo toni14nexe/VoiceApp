@@ -140,3 +140,7 @@ body {
     background-color: var(--gray);
     padding-left: 17px;
 }
+
+.notification{
+    color: white;
+}

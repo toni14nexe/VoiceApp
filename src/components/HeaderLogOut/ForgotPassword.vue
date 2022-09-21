@@ -38,12 +38,19 @@
         data(){
             return{
                 emailMessage: null,
-                email: null
+                email: null,
+                verificationLink: null
             }
         },
         methods:{
             reset(){
                 this.emailMessage = checkInputs.checkEmail(this.email)
+                if(this.emailMessage == null){
+                    const d = new Date();
+                    let time = d.getTime();
+                    this.verificationLink = time + this.email;
+                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/resetPassword.php?verificationLink=" + this.verificationLink + "&email=" + this.email
+                }
             }
         }
     }

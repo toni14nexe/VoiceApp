@@ -75,6 +75,7 @@
                 emailMessage: null,
                 passwordMessage: null,
                 passwordConfirmMessage: null,
+                verificationLink: null
             }
         },
         methods:{
@@ -88,6 +89,13 @@
                 this.emailMessage = checkInputs.checkEmail(this.email)
                 this.passwordMessage = checkInputs.checkPassword(this.password)
                 this.passwordConfirmMessage = checkInputs.checkPasswordConfirm(this.password, this.passwordConfirm)
+                const d = new Date();
+                let time = d.getTime();
+                this.verificationLink = time + this.email;
+                
+                if(this.firstnameMessage == null && this.lastnameMessage == null && this.emailMessage == null && this.passwordMessage == null && this.passwordConfirmMessage == null)
+                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/addUser.php?firstname=" + this.firstname + "&lastname=" + this.lastname 
+                        + "&email=" + this.email + "&password=" + this.password + "&verificationLink=" + this.verificationLink;
             }
         }
     }

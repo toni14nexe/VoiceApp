@@ -28,12 +28,6 @@
 
                   <button @click="LogIn" class="my-btn btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
-                  <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                    <a class="my-btn btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-                    <a class="my-btn btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-                    <a class="my-btn btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-                  </div>
-
                 </div>
 
                 <div>
