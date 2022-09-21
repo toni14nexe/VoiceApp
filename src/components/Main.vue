@@ -3,12 +3,12 @@
       <nav class="navbar navbar-expand-lg bg-dark d-flex justify-content-between">
         <div class="title-div">
           <img class="favicon" src="../../public/favicon.ico" alt="">
-          <a class="navbar-brand title" @click="currentComponent = 'LogIn'" href="#">VoiceApp</a>
+          <a class="navbar-brand title" @click="currentComponent = 'FirstPage'" href="#">VoiceApp</a>
         </div>
 
         <div>
           <button class="navbar-toggler" @click="currentComponent = 'LogIn'" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars text-white"></i>
+            <i class="fa-solid fa-list-ul fa-bars text-white"></i>
           </button>
         
           <form class="form-inline">
@@ -27,6 +27,10 @@
           </form>
         </div>
       </nav>
+
+      <div v-if="currentComponent == 'FirstPage'" >
+        <first-page />
+      </div>
 
       <div v-if="currentComponent == 'LogIn'" >
         <log-in @signUp="currentComponent = 'SignUp'" @forgotPassword="currentComponent = 'ForgotPassword'"  />
@@ -47,16 +51,18 @@
     import LogIn from './HeaderLogOut/LogIn.vue'
     import SignUp from './HeaderLogOut/SignUp.vue'
     import ForgotPassword from './HeaderLogOut/ForgotPassword.vue'
+    import FirstPage from './HeaderLogOut/FirstPage.vue'
   
     export default {
       components:{
         "log-in": LogIn,
         "sign-up": SignUp,
         "forgot-password": ForgotPassword,
+        "first-page": FirstPage
       },
       data(){
         return{
-          currentComponent: 'LogIn',
+          currentComponent: 'FirstPage',
         }
       }
     }
