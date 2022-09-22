@@ -48,6 +48,7 @@
     import ResetSuceed from './HeaderLogOut/ResetSuceed.vue'
     import WrongEmail from './HeaderLogOut/WrongEmail.vue'
     import NewPasswordSuceed from './HeaderLogOut/NewPasswordSuceed.vue'
+    import EmailSent from './HeaderLogOut/EmailSent.vue'
   
     export default {
       components:{
@@ -61,7 +62,8 @@
         Verified,
         ResetSuceed,
         WrongEmail,
-        NewPasswordSuceed
+        NewPasswordSuceed,
+        EmailSent
       },
       data(){
         return{
@@ -97,6 +99,10 @@
         if($cookies.get("NewPasswordSuceed")){
           $cookies.remove('NewPasswordSuceed')
           this.currentComponent = 'NewPasswordSuceed'
+        }
+        if($cookies.get("EmailSent")){
+          $cookies.remove('EmailSent')
+          this.currentComponent = 'EmailSent'
         }
       }
     }

@@ -44,7 +44,8 @@
 </template>
 
 <script>
-  import checkInputs from '../../assets/checkInputs.js'
+  import checkInputs from '../../assets/checkInputs'
+  import MD5 from "crypto-js/md5";
 
   export default {
     data(){
@@ -52,7 +53,7 @@
         email: null,
         emailMessage: null,
         password: null,
-        passwordMessage: null
+        passwordMessage: null,
       }
     },
     methods:{

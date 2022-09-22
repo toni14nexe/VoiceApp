@@ -11,6 +11,7 @@ import CookieResetSuceed from './components/HeaderLogOut/Cookies/CookieResetSuce
 import CookieWrongEmail from './components/HeaderLogOut/Cookies/CookieWrongEmail.vue'
 import CookieNewPassword from './components/HeaderLogOut/Cookies/CookieNewPassword.vue'
 import CookieNewPasswordSuceed from './components/HeaderLogOut/Cookies/CookieNewPasswordSuceed.vue'
+import CookieEmailSent from './components/HeaderLogOut/Cookies/CookieEmailSent.vue'
 
 const routes = [
     {
@@ -54,6 +55,10 @@ const routes = [
         component: CookieNewPasswordSuceed
     },
     {
+        path: '/cookieEmailSent',
+        component: CookieEmailSent
+    },
+    {
         path: '/:notFound(.*)',
         component: NotFound
     }
@@ -75,3 +80,4 @@ app.mount('#app');
 //npm install bootstrap
 //npm i --save @fortawesome/fontawesome-svg-core
 //npm install vue-cookies
+//npm install crypto-js
