@@ -3,12 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import NotFound from './components/NotFound.vue'
 import Main from './components/Main.vue'
-import CookieRegistrationSuceed from './components/HeaderLogOut/CookieRegistrationSuceed.vue'
-import CookieError from './components/HeaderLogOut/CookieError.vue'
-import CookieUserExist from './components/HeaderLogOut/CookieUserExist.vue'
-import CookieVerified from './components/HeaderLogOut/CookieVerified.vue'
-import CookieResetSuceed from './components/HeaderLogOut/CookieResetSuceed.vue'
-import CookieWrongEmail from './components/HeaderLogOut/CookieWrongEmail.vue'
+import CookieRegistrationSuceed from './components/HeaderLogOut/Cookies/CookieRegistrationSuceed.vue'
+import CookieError from './components/HeaderLogOut/Cookies/CookieError.vue'
+import CookieUserExist from './components/HeaderLogOut/Cookies/CookieUserExist.vue'
+import CookieVerified from './components/HeaderLogOut/Cookies/CookieVerified.vue'
+import CookieResetSuceed from './components/HeaderLogOut/Cookies/CookieResetSuceed.vue'
+import CookieWrongEmail from './components/HeaderLogOut/Cookies/CookieWrongEmail.vue'
+import CookieNewPassword from './components/HeaderLogOut/Cookies/CookieNewPassword.vue'
+import CookieNewPasswordSuceed from './components/HeaderLogOut/Cookies/CookieNewPasswordSuceed.vue'
 
 const routes = [
     {
@@ -42,6 +44,14 @@ const routes = [
     {
         path: '/cookieWrongEmail',
         component: CookieWrongEmail
+    },
+    {
+        path: '/cookieNewPassword',
+        component: CookieNewPassword
+    },
+    {
+        path: '/cookieNewPasswordSuceed',
+        component: CookieNewPasswordSuceed
     },
     {
         path: '/:notFound(.*)',

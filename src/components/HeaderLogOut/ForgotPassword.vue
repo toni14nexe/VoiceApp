@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <section class="vh-100 gradient-custom">
+    <div id="main">
+        <section class="">
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -10,7 +10,7 @@
                                 <div class="pb-5">
 
                                     <h2 class="fw-bold mb-2 text-uppercase">Reset password</h2>
-                                    <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                    <p class="text-white-50 mb-5">Please enter your email!</p>
 
                                     <div class="form-outline mb-4">
                                         <p class="error-message" v-if="emailMessage">{{emailMessage}}</p>

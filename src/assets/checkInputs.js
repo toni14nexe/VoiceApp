@@ -54,5 +54,12 @@ export default{
         else if(passwordConfirm.length == 0) return 'Empty field!'
         else if(password != passwordConfirm) return 'Passwords do not match!'
         return null
+    },
+
+    checkCode(code){
+        if(code == null) return 'Empty field! Verify code has been sent to your email!'
+        else if(code.length == 0) return 'Empty field! Verify code has been sent to your email!'
+        else if(code.length < 20) return 'Wrong input! Verify code is too short!'
+        return null
     }
 }
