@@ -41,7 +41,7 @@
     import SignUp from './HeaderLogOut/SignUp.vue'
     import ForgotPassword from './HeaderLogOut/ForgotPassword.vue'
     import FirstPage from './HeaderLogOut/FirstPage.vue'
-    import RegisterError from './HeaderLogOut/RegisterError.vue'
+    import Error from './HeaderLogOut/Error.vue'
     import RegistrationSuceed from './HeaderLogOut/RegistrationSuceed.vue'
     import UserExist from './HeaderLogOut/UserExist.vue'
     import Verified from './HeaderLogOut/Verified.vue'
@@ -57,7 +57,7 @@
         SignUp,
         ForgotPassword,
         FirstPage,
-        RegisterError,
+        Error,
         RegistrationSuceed,
         UserExist,
         Verified,
@@ -74,42 +74,50 @@
         }
       },
       mounted(){
-        if($cookies.get("RegistrationSuceed")){
-          $cookies.remove('RegistrationSuceed')
+        if(window.location.search == '?registrationSuceed'){
           this.currentComponent = 'RegistrationSuceed'
+          this.setEmptyURL()
         }
-        if($cookies.get("RegisterError")){
-          $cookies.remove('RegisterError')
-          this.currentComponent = 'RegisterError'
+        if(window.location.search == '?error'){
+          this.currentComponent = 'Error'
+          this.setEmptyURL()
         }
-        if($cookies.get("UserExist")){
-          $cookies.remove('UserExist')
+        if(window.location.search == '?userExist'){
           this.currentComponent = 'UserExist'
+          this.setEmptyURL()
         }
-        if($cookies.get("Verified")){
-          $cookies.remove('Verified')
+        if(window.location.search == '?verified'){
           this.currentComponent = 'Verified'
+          this.setEmptyURL()
         }
-        if($cookies.get("ResetSuceed")){
-          $cookies.remove('ResetSuceed')
+        if(window.location.search == '?resetSuceed'){
           this.currentComponent = 'ResetSuceed'
+          this.setEmptyURL()
         }
-        if($cookies.get("WrongEmail")){
-          $cookies.remove('WrongEmail')
+        if(window.location.search == '?wrongEmail'){
           this.currentComponent = 'WrongEmail'
+          this.setEmptyURL()
         }
-        if($cookies.get("NewPasswordSuceed")){
-          $cookies.remove('NewPasswordSuceed')
+        if(window.location.search == '?newPasswordSuceed'){
           this.currentComponent = 'NewPasswordSuceed'
+          this.setEmptyURL()
         }
-        if($cookies.get("EmailSent")){
-          $cookies.remove('EmailSent')
+        if(window.location.search == '?emailSent'){
           this.currentComponent = 'EmailSent'
+          this.setEmptyURL()
         }
-        if($cookies.get("NewPassword")){
-        $cookies.remove('NewPassword')
-        this.currentComponent = 'NewPassword'
-      }
+        if(window.location.search == '?newPassword'){
+          this.currentComponent = 'NewPassword'
+          this.setEmptyURL()
+        }
+        if(window.location.search == '?wrongLogIn'){
+          this.currentComponent = 'LogIn'
+        }
+      },
+      methods:{
+        setEmptyURL(){
+          window.history.pushState({}, document.title, "/");
+        }
       }
     }
   </script>

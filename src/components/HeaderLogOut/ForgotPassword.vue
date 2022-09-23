@@ -34,6 +34,7 @@
 <script>
     import checkInputs from '../../assets/checkInputs';
     import MD5 from "crypto-js/md5";
+    import sql from "../../assets/sql.js"
 
     export default {
         data(){
@@ -50,7 +51,7 @@
                     const d = new Date();
                     let time = d.getTime();
                     this.verificationLink = time + this.email;
-                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/resetPassword.php?verificationLink=" + MD5(this.verificationLink).toString() + "&email=" + this.email
+                    window.location = sql.ForgotPassword() + "?verificationLink=" + MD5(this.verificationLink).toString() + "&email=" + this.email
                 }
             }
         }

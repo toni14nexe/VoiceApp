@@ -44,6 +44,7 @@
 <script>
   import checkInputs from '../../assets/checkInputs'
   import MD5 from "crypto-js/md5";
+  import sql from "../../assets/sql.js"
 
   export default {
     data(){
@@ -53,6 +54,12 @@
         password: null,
         passwordMessage: null,
       }
+    },
+    mounted(){
+      if(window.location.search == '?wrongLogIn'){
+          this.emailMessage = 'Wrong email or password!'
+          window.history.pushState({}, document.title, "/");
+        }
     },
     methods:{
       switchToForgotPassword(){
@@ -66,6 +73,9 @@
       LogIn(){
         this.emailMessage = checkInputs.checkEmail(this.email)
         this.passwordMessage = checkInputs.checkPasswordLength(this.password)
+
+        if(this.emailMessage == null && this.passwordMessage == null)
+          window.location = sql.LogIn() + "?password=" + MD5(this.password).toString() + "&email=" + this.email
       }
     }
   }

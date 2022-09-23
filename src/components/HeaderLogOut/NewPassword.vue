@@ -45,6 +45,7 @@
 <script>
     import checkInputs from '../../assets/checkInputs.js'
     import MD5 from "crypto-js/md5";
+    import sql from "../../assets/sql.js"
 
     export default {
         data(){
@@ -68,7 +69,7 @@
                 this.newVerificationLink = time + this.code.substr(13,this.code.length);
 
                 if(this.passwordMessage == null && this.passwordConfirmMessage == null && this.codeMessage == null)
-                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/newPassword.php?verificationLink=" + this.code 
+                    window.location = sql.NewPassword() + "?verificationLink=" + this.code 
                         + "&newVerificationLink=" + MD5(this.newVerificationLink).toString() + "&password=" + MD5(this.password).toString()
             }
         }

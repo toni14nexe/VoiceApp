@@ -62,6 +62,7 @@
 <script>
     import checkInputs from '../../assets/checkInputs.js'
     import MD5 from "crypto-js/md5";
+    import sql from "../../assets/sql.js"
 
     export default {
         data(){
@@ -95,7 +96,7 @@
                 this.verificationLink = time + this.email;
                 
                 if(this.firstnameMessage == null && this.lastnameMessage == null && this.emailMessage == null && this.passwordMessage == null && this.passwordConfirmMessage == null)
-                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/addUser.php?firstname=" + this.firstname + "&lastname=" + this.lastname 
+                    window.location = sql.SignUp() + "?firstname=" + this.firstname + "&lastname=" + this.lastname 
                         + "&email=" + this.email + "&password=" + MD5(this.password).toString() + "&verificationLink=" + MD5(this.verificationLink).toString()
                         + "&token=" + MD5(this.email + this.verificationLink).toString()
             }
