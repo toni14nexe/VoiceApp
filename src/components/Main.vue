@@ -50,6 +50,7 @@
     import NewPasswordSuceed from './HeaderLogOut/NewPasswordSuceed.vue'
     import EmailSent from './HeaderLogOut/EmailSent.vue'
     import NewPassword from './HeaderLogOut/NewPassword.vue'
+    import SessionExpired from './HeaderLogOut/SessionExpired.vue'
   
     export default {
       components:{
@@ -65,7 +66,8 @@
         WrongEmail,
         NewPasswordSuceed,
         EmailSent,
-        NewPassword
+        NewPassword,
+        SessionExpired
       },
       data(){
         return{
@@ -111,6 +113,9 @@
         }
         if(window.location.search == '?wrongLogIn'){
           this.currentComponent = 'LogIn'
+        }
+        if(window.location.search == '?sessionExpired'){
+          this.currentComponent = 'SessionExpired'
         }
       },
       methods:{

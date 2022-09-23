@@ -53,6 +53,8 @@
         emailMessage: null,
         password: null,
         passwordMessage: null,
+        token: null,
+        tokenExpiration: null
       }
     },
     mounted(){
@@ -73,9 +75,14 @@
       LogIn(){
         this.emailMessage = checkInputs.checkEmail(this.email)
         this.passwordMessage = checkInputs.checkPasswordLength(this.password)
+        const d = new Date();
+        let time = d.getTime();
+        this.token = time + MD5(this.email).toString()
+        this.tokenExpiration = new Date().toLocaleString()
 
         if(this.emailMessage == null && this.passwordMessage == null)
           window.location = sql.LogIn() + "?password=" + MD5(this.password).toString() + "&email=" + this.email
+            + "&emailToken=" + MD5(this.email).toString() + "&token=" + this.token + "&tokenExpiration=" + this.tokenExpiration
       }
     }
   }

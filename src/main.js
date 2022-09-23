@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import NotFound from './components/NotFound.vue'
 import Main from './components/Main.vue'
+import MainUser from './components/MainUser.vue'
 
 const routes = [
     {
@@ -10,8 +11,8 @@ const routes = [
         component: Main
     },
     {
-        path: '/home',
-        component: Main
+        path: '/mainUser',
+        component: MainUser
     },
     {
         path: '/:notFound(.*)',

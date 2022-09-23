@@ -16,5 +16,9 @@ export default{
 
     LogIn(){
         return SQLlink + 'logIn.php'
+    },
+
+    Refresh(){
+        return SQLlink + 'refreshToken.php'
     }
 }
