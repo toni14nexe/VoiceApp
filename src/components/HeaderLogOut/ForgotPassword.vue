@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <section class="">
+        <section class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 290px)">
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">

@@ -8,24 +8,7 @@
 </template>
 
 <script>
-  import NewPassword from './HeaderLogOut/NewPassword.vue'
-
-  export default {
-    data(){
-      return{
-        currentComponent: null
-      }
-    },
-    components:{
-      NewPassword
-    },
-    mounted(){
-      if($cookies.get("NewPassword")){
-        $cookies.remove('NewPassword')
-        this.currentComponent = 'NewPassword'
-      }
-    }
-  }
+  export default {}
 </script>
 
 <style>

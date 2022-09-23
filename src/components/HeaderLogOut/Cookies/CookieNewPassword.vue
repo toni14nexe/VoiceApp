@@ -7,7 +7,7 @@
     export default {
         mounted(){
             VueCookies.set('NewPassword' , 'true', "1min");
-            window.location = "./newPassword"
+            window.location = "./"
         }
     }
 </script>

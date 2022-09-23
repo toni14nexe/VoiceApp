@@ -8,6 +8,7 @@
     background: #6a11cb;
     background: -webkit-linear-gradient(to right, rgba(153, 26, 217, 1), rgba(37, 117, 252, 1), rgba(153, 26, 217, 1));
     background: linear-gradient(to right, rgba(153, 26, 217, 1), rgba(37, 117, 252, 1), rgba(153, 26, 217, 1));
+    min-height: calc(100vh - 290px);
 }
 
 html::-webkit-scrollbar {
@@ -143,4 +144,8 @@ body {
 
 .notification{
     color: white;
+}
+
+.vh-100{
+    min-height: calc(100vh - 290px);
 }
