@@ -33,6 +33,7 @@
 
 <script>
     import checkInputs from '../../assets/checkInputs';
+    import MD5 from "crypto-js/md5";
 
     export default {
         data(){
@@ -49,7 +50,7 @@
                     const d = new Date();
                     let time = d.getTime();
                     this.verificationLink = time + this.email;
-                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/resetPassword.php?verificationLink=" + this.verificationLink + "&email=" + this.email
+                    window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/resetPassword.php?verificationLink=" + MD5(this.verificationLink).toString() + "&email=" + this.email
                 }
             }
         }

@@ -70,7 +70,6 @@
                 lastname: null,
                 email: null,
                 password: null,
-                passwordMD5: null,
                 passwordConfirm: null,
                 firstnameMessage: null,
                 lastnameMessage: null,
@@ -94,11 +93,11 @@
                 const d = new Date();
                 let time = d.getTime();
                 this.verificationLink = time + this.email;
-                this.passwordMD5 = MD5(this.password).toString()
                 
                 if(this.firstnameMessage == null && this.lastnameMessage == null && this.emailMessage == null && this.passwordMessage == null && this.passwordConfirmMessage == null)
                     window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/addUser.php?firstname=" + this.firstname + "&lastname=" + this.lastname 
-                        + "&email=" + this.email + "&password=" + this.passwordMD5 + "&verificationLink=" + this.verificationLink;
+                        + "&email=" + this.email + "&password=" + MD5(this.password).toString() + "&verificationLink=" + MD5(this.verificationLink).toString()
+                        + "&token=" + MD5(this.email + this.verificationLink).toString()
             }
         }
     }

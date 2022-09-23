@@ -51,7 +51,6 @@
             return{
                 code: null,
                 password: null,
-                passwordMD5: null,
                 passwordConfirm: null,
                 codeMessage: null,
                 passwordMessage: null,
@@ -67,11 +66,10 @@
                 const d = new Date();
                 let time = d.getTime();
                 this.newVerificationLink = time + this.code.substr(13,this.code.length);
-                this.passwordMD5 = MD5(this.password).toString()
 
                 if(this.passwordMessage == null && this.passwordConfirmMessage == null && this.codeMessage == null)
                     window.location = "https://toni14nexe.000webhostapp.com/VoiceApp/newPassword.php?verificationLink=" + this.code 
-                        + "&newVerificationLink=" + this.newVerificationLink + "&password=" + this.passwordMD5
+                        + "&newVerificationLink=" + MD5(this.newVerificationLink).toString() + "&password=" + MD5(this.password).toString()
             }
         }
     }
