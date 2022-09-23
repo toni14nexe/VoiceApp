@@ -94,11 +94,11 @@
                 const d = new Date();
                 let time = d.getTime();
                 this.verificationLink = time + this.email;
-                
+
                 if(this.firstnameMessage == null && this.lastnameMessage == null && this.emailMessage == null && this.passwordMessage == null && this.passwordConfirmMessage == null)
                     window.location = sql.SignUp() + "?firstname=" + this.firstname + "&lastname=" + this.lastname 
                         + "&email=" + this.email + "&password=" + MD5(this.password).toString() + "&verificationLink=" + MD5(this.verificationLink).toString()
-                        + "&token=" + MD5(this.email + this.verificationLink).toString()
+                        + "&emailToken=" + MD5(this.email).toString()
             }
         }
     }

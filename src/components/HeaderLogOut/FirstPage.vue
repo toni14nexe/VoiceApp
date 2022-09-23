@@ -32,7 +32,7 @@
             changeSlideImage() {
                 if(this.slideImage < 3) this.slideImage++
                 else this.slideImage = 1
-                setTimeout(this.changeSlideImage, 5000)
+                setTimeout(this.changeSlideImage, 7000)
             },
         },
         created(){
@@ -82,10 +82,13 @@
     }
 
     .hiding-large{
+        transition: ease-in 0.3s;
         display: inherit;
+        animation:opac 2s}@keyframes opac{from{opacity:0} to{opacity:1}
     }
 
     .hiding-small{
+        transition: ease-in 0.3s;
         display: none;
     }
 

@@ -106,9 +106,8 @@
           this.currentComponent = 'EmailSent'
           this.setEmptyURL()
         }
-        if(window.location.search == '?newPassword'){
+        if(window.location.search.substring(0,12) == '?newPassword'){
           this.currentComponent = 'NewPassword'
-          this.setEmptyURL()
         }
         if(window.location.search == '?wrongLogIn'){
           this.currentComponent = 'LogIn'

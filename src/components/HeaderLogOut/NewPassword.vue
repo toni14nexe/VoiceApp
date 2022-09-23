@@ -59,6 +59,10 @@
                 newVerificationLink: null
             }
         },
+        mounted(){
+          this.code = window.location.search.substring(12,window.location.search.length)
+          window.history.pushState({}, document.title, "/");
+        },
         methods:{
             Reset(){
                 this.codeMessage = checkInputs.checkCode(this.code)
