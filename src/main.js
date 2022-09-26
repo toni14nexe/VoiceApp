@@ -37,3 +37,7 @@ app.mount('#app');
 //npm i --save @fortawesome/fontawesome-svg-core
 //npm install vue-cookies
 //npm install crypto-js
+//npm install axios
+//npm install json-server -g
+
+//to run db server: json-server dbMenu.json

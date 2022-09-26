@@ -1,4 +1,6 @@
 import sql from '../assets/sql.js'
+import MD5 from "crypto-js/md5"
+import VueCookies from 'vue-cookies'
 
 export default{
     getEmail(){
@@ -19,6 +21,19 @@ export default{
         return window.location.search.substring(1,33).replace(/%+/g, ' ').toLowerCase()
     },
 
+    getToken(){
+        return window.location.search.substring(window.location.search.search('---')+3, window.location.search.search(',,,'))
+    },
+
+    getEmailToken(){
+        return window.location.search.substring(window.location.search.search(',,,')+3, window.location.search.length)
+    },
+
+    getRefreshed(){
+        if(window.location.search.search(".....")) return 1
+        else return 0
+    },
+
     differenceInMinutes(){
         var tokenExpiration = new Date(
             parseInt(this.getTokenExpiration().substring(6,10)), parseInt(this.getTokenExpiration().substring(3,5))-1, parseInt(this.getTokenExpiration().substring(0,2)),
@@ -30,19 +45,19 @@ export default{
     },
 
     checkTokenExpiration(){
-        if(this.differenceInMinutes() > 14)
+        if(this.differenceInMinutes() > 19)
             window.location = '../?sessionExpired'
-        else{
-            this.refreshTokenExpiration()
-        }
     },
 
     refreshTokenExpiration(){
         const d = new Date();
         let time = d.getTime();
-        var newToken = time + MD5(this.getEmail).toString()
-        var tokenExpiration = new Date().toLocaleString()
-        window.location = sql.Refresh() + '?email=' + this.getEmail + '&token=' + this.getToken() + '&newToken=' + newToken + '&=tokenExpiration' + tokenExpiration
+        this.token = time + MD5(this.email).toString()
+        this.tokenExpiration = new Date().toLocaleString()
+
+        if(this.emailMessage == null && this.passwordMessage == null)
+          window.location = sql.Refresh() + "?email=" + this.email + "&emailToken=" + this.getEmailToken() 
+            + "&token=" + this.token + "&tokenExpiration=" + this.tokenExpiration
     },
 
     getCyrillicString(str){
@@ -57,5 +72,33 @@ export default{
         str = str.replace(/%C5%BE+/g, 'ž')
         str = str.replace(/%C5%BD+/g, 'Ž')
         return str
+    },
+
+    setCookies(){
+        VueCookies.set('email' , this.getEmail())
+        VueCookies.set('emailToken' , this.getEmailToken())
+        VueCookies.set('token' , this.getToken())
+        VueCookies.set('firstname' , this.getFirstname())
+        VueCookies.set('lastname' , this.getLastname())
+    },
+
+    expiredLogOut(){
+        VueCookies.get('expiration' , this.getLastname())
+    },
+
+    getSearch(){
+        return window.location.search.substring(window.location.search.indexOf('?link=')+6, window.location.search.indexOf('---id:'))
+    },
+
+    getSearchUsers(){
+        users: [
+            { id: 0 }
+          ]
+        var link = window.location.search
+        for(var i=0; i<link.length; i++){
+            i = window.location.search.indexOf('---id:') + 6
+            console.log(users) // tu smo stali
+
+        }
     }
 }

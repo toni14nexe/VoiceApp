@@ -71,8 +71,7 @@
       },
       data(){
         return{
-          currentComponent: 'FirstPage',
-          cookie: null
+          currentComponent: 'FirstPage'
         }
       },
       mounted(){

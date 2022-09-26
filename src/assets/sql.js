@@ -20,5 +20,9 @@ export default{
 
     Refresh(){
         return SQLlink + 'refreshToken.php'
+    },
+
+    Search(){
+        return SQLlink + 'search.php'
     }
 }
