@@ -17,6 +17,11 @@ export default{
         return this.getCyrillicString(lastname)
     },
 
+    getImage(){
+        var image = window.location.search.substring(window.location.search.search('!!!')+3, window.location.search.length)
+        return image
+    },
+
     getTokenExpiration(){
         return window.location.search.substring(1,33).replace(/%+/g, ' ').toLowerCase()
     },
@@ -26,7 +31,7 @@ export default{
     },
 
     getEmailToken(){
-        return window.location.search.substring(window.location.search.search(',,,')+3, window.location.search.length)
+        return window.location.search.substring(window.location.search.search(',,,')+3, window.location.search.search('!!!'))
     },
 
     getRefreshed(){
@@ -71,6 +76,7 @@ export default{
         str = str.replace(/%C4%90+/g, 'Đ')
         str = str.replace(/%C5%BE+/g, 'ž')
         str = str.replace(/%C5%BD+/g, 'Ž')
+        str = str.replace(/%20+/g, ' ')
         return str
     },
 
@@ -80,6 +86,7 @@ export default{
         VueCookies.set('token' , this.getToken())
         VueCookies.set('firstname' , this.getFirstname())
         VueCookies.set('lastname' , this.getLastname())
+        VueCookies.set('image' , this.getImage())
     },
 
     expiredLogOut(){
@@ -87,18 +94,24 @@ export default{
     },
 
     getSearch(){
-        return window.location.search.substring(window.location.search.indexOf('?link=')+6, window.location.search.indexOf('---id:'))
+        return window.location.search.substring(window.location.search.indexOf('?link=1')+7, window.location.search.indexOf('---id:'))
     },
 
     getSearchUsers(){
-        users: [
-            { id: 0 }
-          ]
-        var link = window.location.search
+        var users = []
+        var link = this.getCyrillicString(window.location.search)
         for(var i=0; i<link.length; i++){
-            i = window.location.search.indexOf('---id:') + 6
-            console.log(users) // tu smo stali
-
+            if(link.indexOf('id:') != -1){
+                users.push({
+                    id: link.substring(link.indexOf('id:') + 3, link.indexOf(':::')),
+                    fullname: link.substring(link.indexOf(':::') + 3, link.indexOf(';;;')),
+                    image: link.substring(link.indexOf(';;;') + 3, link.indexOf('!!!')),
+                    email: link.substring(link.indexOf('!!!') + 3, link.indexOf('___'))
+                })
+                link = link.slice(link.indexOf('___') + 3, link.length)
+            }
+            else break;
         }
+        return users
     }
 }

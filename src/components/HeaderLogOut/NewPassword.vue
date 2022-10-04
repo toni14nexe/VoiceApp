@@ -19,10 +19,10 @@
                   </div>
 
                   <div class="form-outline mb-4">
-                        <p class="error-message" v-if="passwordMessage">{{passwordMessage}}</p>
-                        <input type="password" v-model="password" id="typePasswordX" class="my-input form-control form-control-lg" placeholder="Password" />
-                        <label class="form-label" for="typePasswordX">Password</label>
-                    </div>
+                    <p class="error-message" v-if="passwordMessage">{{passwordMessage}}</p>
+                    <input type="password" v-model="password" id="typePasswordX" class="my-input form-control form-control-lg" placeholder="Password" />
+                    <label class="form-label" for="typePasswordX">Password</label>
+                  </div>
 
                     <div class="form-outline mb-4">
                         <p class="error-message" v-if="passwordConfirmMessage">{{passwordConfirmMessage}}</p>

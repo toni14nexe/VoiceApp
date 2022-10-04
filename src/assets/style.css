@@ -146,6 +146,13 @@ body {
     transition: ease-in 0.3s;
     background-color: var(--gray);
     padding-left: 17px;
+    cursor: pointer;
+}
+
+.title-div:hover .title{
+    transition: ease-in 0.3s;
+    letter-spacing: 1px;
+    color: var(--pink);
 }
 
 .notification{

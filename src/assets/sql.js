@@ -24,5 +24,13 @@ export default{
 
     Search(){
         return SQLlink + 'search.php'
+    },
+
+    ChangePassword(){
+        return SQLlink + 'changePassword.php'
+    },
+
+    ChangeProfileImage(){
+        return SQLlink + 'changeProfilImage.php'
     }
 }
