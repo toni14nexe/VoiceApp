@@ -1,27 +1,39 @@
 <template>
     <div >
-        <div v-for="mainType in mainTypes" class="table-div">
-            <p v-if="mainType.exist == true" class="table-main-title">{{mainType.name}}</p>
-            <div v-if="mainType.name == 'Drinks'" v-for="type in drinksTypes">
-                    <p class="table-title">{{type.name}}</p>
-                    <div class="d-flex justify-content-center">
-                        <table v-if="type.exist == true">
-                            <tr>
-                                <th style="text-align: left; padding-left: 10px;">Name</th>
-                                <th>Amount</th>
-                                <th style="text-align: right; padding-right: 10px;">Price</th>
-                            </tr>
-                            <tr v-for="product in productsList.data">
-                                <td v-if="type.type == product.type" style="text-align: left;">{{product.name}}</td>
-                                <td v-if="type.type == product.type">{{product.description}}</td>
-                                <td v-if="type.type == product.type" style="text-align: right;">{{product.price}} €</td>
-                            </tr>
-                        </table>
-                    </div>
+        <div class="table-div">
+            <div v-for="mainType in mainTypes">
+                <p v-if="mainType.exist == true" class="table-main-title">{{mainType.name}}</p>
+                <div v-if="mainType.name == 'Drinks' && mainType.exist == true" v-for="subType in drinksTypes">
+                    <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                </div>
+                <div v-if="mainType.name == 'Food' && mainType.exist == true" v-for="subType in foodTypes">
+                    <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                </div>
             </div>
-            <div v-if="mainType.name == 'Food'" v-for="type in foodTypes">
-                <p v-if="type.exist == true" class="table-title">{{type.name}}</p>
-                <div v-if="type.exist == true" class="d-flex justify-content-center">
+        </div>
+
+        <div v-for="mainType in mainTypes" :id=mainType.type class="table-div">
+            <p v-if="mainType.exist == true" class="table-main-title">{{mainType.name}}</p>
+            <div v-if="mainType.name == 'Drinks' && mainType.exist == true" v-for="subType in drinksTypes" :id="subType.type">
+                <p class="table-title">{{subType.name}}</p>
+                <div class="d-flex justify-content-center">
+                    <table v-if="subType.exist == true">
+                        <tr>
+                            <th style="text-align: left; padding-left: 10px;">Name</th>
+                            <th>Amount</th>
+                            <th style="text-align: right; padding-right: 10px;">Price</th>
+                        </tr>
+                        <tr v-for="product in productsList.data">
+                            <td v-if="subType.type == product.type" style="text-align: left;">{{product.name}}</td>
+                            <td v-if="subType.type == product.type">{{product.description}}</td>
+                            <td v-if="subType.type == product.type" style="text-align: right;">{{product.price}} €</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div v-if="mainType.name == 'Food' && mainType.exist == true" v-for="subType in foodTypes"  :id="subType.type">
+                <p v-if="subType.exist == true" class="table-title">{{subType.name}}</p>
+                <div v-if="subType.exist == true" class="d-flex justify-content-center">
                     <table>
                         <tr>
                             <th style="text-align: left; padding-left: 10px;">Name</th>
@@ -29,9 +41,9 @@
                             <th style="text-align: right;  padding-right: 10px;">Price</th>
                         </tr>
                         <tr v-for="product in productsList.data">
-                            <td v-if="type.type == product.type" style="text-align: left;">{{product.name}}</td>
-                            <td v-if="type.type == product.type" style="text-align: left;">{{product.description}}</td>
-                            <td v-if="type.type == product.type" style="text-align: right;">{{product.price}} €</td>
+                            <td v-if="subType.type == product.type" style="text-align: left;">{{product.name}}</td>
+                            <td v-if="subType.type == product.type" style="text-align: left;">{{product.description}}</td>
+                            <td v-if="subType.type == product.type" style="text-align: right;">{{product.price}} €</td>
                         </tr>
                     </table>
                 </div>
@@ -49,11 +61,13 @@
                 mainTypes: {
                     drinks: {
                         name: 'Drinks',
-                        exist: false
+                        exist: false,
+                        type: 'drinks'
                     },
                     food: {
                         name: 'Food',
-                        exist: false
+                        exist: false,
+                        type: 'food'
                     }
                 },
                 drinksTypes: {
@@ -110,7 +124,8 @@
                         type: 'dessert'
                     }
                 },
-                productsList: null
+                productsList: null,
+                imageUrl: ['/src/assets/images/', '.jpeg']
             }
         },
         async mounted(){
@@ -206,7 +221,7 @@
         margin-left: 5%;
         margin-right: 5%;
         border-radius: 20px;
-        padding: 70px 25px 70px 25px;
+        padding: 70px 25px 0px 25px;
         margin-top: 50px;
     }
 
@@ -220,8 +235,7 @@
     .table-title{
         color: white;
         font-size: 2.1rem;
-        padding-top: 1rem;
-        padding-top: 50px;
+        padding-top: 75px;
         font-weight: 700;
     }
 
@@ -243,5 +257,10 @@
         color: white;
         text-align: center;
         font-size: 1.3rem;
+    }
+
+    .product-img{
+        width: 25%;
+        height: 25%;
     }
 </style>

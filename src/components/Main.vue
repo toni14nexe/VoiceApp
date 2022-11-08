@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg bg-dark d-flex justify-content-between">
+    <nav class="navbar navbar-expand-lg bg-dark d-flex justify-content-between bottom-border">
         <a @click="currentComponent = 'FirstPage'" href="#">
           <div class="title-div">
               <img class="favicon" src="../../public/favicon.ico" alt="">
