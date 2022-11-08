@@ -53,7 +53,6 @@
     import EmailSent from './HeaderLogOut/EmailSent.vue'
     import NewPassword from './HeaderLogOut/NewPassword.vue'
     import SessionExpired from './HeaderLogOut/SessionExpired.vue'
-    import sql from "../assets/sql"
   
     export default {
       components:{
@@ -70,78 +69,14 @@
         NewPasswordSuceed,
         EmailSent,
         NewPassword,
-        SessionExpired,
-        PriceListJSON: null
+        SessionExpired
       },
       data(){
         return{
           currentComponent: 'FirstPage',
-          /*priceListValues: {
-            mainType: {
-              drink: {
-                name: 'Drinks',
-                hot: {
-                  exist: false,
-                  name: 'Hot drinks',
-                  type: 'hot'
-                },
-                juice: {
-                  exist: false,
-                  name: 'Juices',
-                  type: 'juice'
-                },
-                beer: {
-                  exist: false,
-                  name: 'Beers',
-                  type: 'beer'
-                },
-                wine: {
-                  exist: false,
-                  name: 'Wines',
-                  type: 'wine'
-                },
-                alcohol: {
-                  exist: false,
-                  name: 'Alcohol drinks',
-                  type: 'alcohol'
-                },
-              },
-              food: {
-                name: 'Food',
-                soup: {
-                  exist: false,
-                  name: 'Soups',
-                  type: 'soup'
-                },
-                pizza: {
-                  exist: false,
-                  name: 'Pizza',
-                  type: 'pizza'
-                },
-                grill: {
-                  exist: false,
-                  name: 'Grill',
-                  type: 'grill'
-                },
-                dish: {
-                  exist: false,
-                  name: 'Side dish',
-                  type: 'dish'
-                }
-                
-                
-                //here goes food types
-              }
-            }
-          }*/
         }
       },
       mounted(){
-        /*if(window.location.search.substring(0, 10) == '?JSONfile=' && this.PriceListJSON == null){
-          this.PriceListJSON = JSON.parse(decodeURI(window.location.search.substring(10)))
-        }
-        this.getPriceList()*/
-
         if(window.location.search.substring(0,10) == '?JSONfile='){
           this.setEmptyURL()
         }
@@ -186,83 +121,11 @@
         if(window.location.search == '?sessionExpired'){
           this.currentComponent = 'SessionExpired'
         }
-
-        //this.getPriceListValues()
       },
       methods:{
         setEmptyURL(){
           window.history.pushState({}, document.title, "/");
-        },
-
-       /* getPriceList(){
-          if(this.PriceListJSON == null){
-            window.location = sql.GetPriceList()
-          }
-        },*/
-
-        /*getPriceListValues(){
-          console.log(this.PriceListJSON)
-          for(var i=0; i<this.PriceListJSON.length; i++){
-            if(this.PriceListJSON[i].mainType == 'drink'){
-              if(this.PriceListJSON[i].type == 'hot'){
-                if(this.priceListValues.mainType.drink.hot.exist == false){
-                  this.priceListValues.mainType.drink.hot.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'juice'){
-                if(this.priceListValues.mainType.drink.juice.exist == false){
-                  this.priceListValues.mainType.drink.juice.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'beer'){
-                if(this.priceListValues.mainType.drink.beer.exist == false){
-                  this.priceListValues.mainType.drink.beer.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'wine'){
-                if(this.priceListValues.mainType.drink.wine.exist == false){
-                  this.priceListValues.mainType.drink.wine.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'alcohol'){
-                if(this.priceListValues.mainType.drink.alcohol.exist == false){
-                  this.priceListValues.mainType.drink.alcohol.exist = true
-                }
-                continue
-              }
-            } else{
-              if(this.PriceListJSON[i].type == 'soup'){
-                if(this.priceListValues.mainType.food.soup.exist == false){
-                  this.priceListValues.mainType.food.soup.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'pizza'){
-                if(this.priceListValues.mainType.food.pizza.exist == false){
-                  this.priceListValues.mainType.food.pizza.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'grill'){
-                if(this.priceListValues.mainType.food.grill.exist == false){
-                  this.priceListValues.mainType.food.grill.exist = true
-                }
-                continue
-              }
-              else if(this.PriceListJSON[i].type == 'dish'){
-                if(this.priceListValues.mainType.food.dish.exist == false){
-                  this.priceListValues.mainType.food.dish.exist = true
-                }
-                continue
-              }
-            }
-          }
-          console.log(this.priceListValues)
-        }*/
+        }
       }
     }
   </script>

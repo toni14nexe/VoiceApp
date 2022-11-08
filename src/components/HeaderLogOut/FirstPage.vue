@@ -7,6 +7,9 @@
             <img class="hiding-small" v-if="slideImage == 1" src="../../assets/images/wallpaper1small.jpeg">
             <img class="hiding-small" v-if="slideImage == 2" src="../../assets/images/wallpaper2small.jpeg">
             <img class="hiding-small" v-if="slideImage == 3" src="../../assets/images/wallpaper3small.jpeg">
+            <img class="hiding-xs" v-if="slideImage == 1" src="../../assets/images/wallpaper1xs.jpeg">
+            <img class="hiding-xs" v-if="slideImage == 2" src="../../assets/images/wallpaper2xs.jpeg">
+            <img class="hiding-xs" v-if="slideImage == 3" src="../../assets/images/wallpaper3xs.jpeg">
         </div>
 
         <div class="overlay">
@@ -90,9 +93,16 @@
     .hiding-small{
         transition: ease-in 0.3s;
         display: none;
+        animation:opac 2s}@keyframes opac{from{opacity:0} to{opacity:1}
     }
 
-    @media screen and (max-width: 1200px) {
+    .hiding-xs{
+        transition: ease-in 0.3s;
+        display: none;
+        animation:opac 2s}@keyframes opac{from{opacity:0} to{opacity:1}
+    }
+
+    @media screen and (max-width: 1600px) {
         #image-text{
             font-size: 1.6rem;
         }
@@ -102,6 +112,24 @@
         }
 
         .hiding-small{
+            display: inherit;
+        }
+
+        .hiding-xs{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .hiding-large{
+            display: none;
+        }
+
+        .hiding-small{
+            display: none;
+        }
+
+        .hiding-xs{
             display: inherit;
         }
     }
