@@ -8,7 +8,7 @@
 
               <div class="pb-5">
 
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <h2 class="fw-bold mb-2 text-uppercase">Employee Login</h2>
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                 <div class="form-outline mb-4">
@@ -27,10 +27,6 @@
 
                 <button @click="LogIn" class="my-btn btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
-              </div>
-
-              <div>
-                <p class="mb-0">Don't have an account? <a @click="switchToSignUp" href="#" class="link">Sign Up</a></p>
               </div>
 
             </div>

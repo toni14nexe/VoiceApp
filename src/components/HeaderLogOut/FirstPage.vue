@@ -10,7 +10,7 @@
         </div>
 
         <div class="overlay">
-            <h1 id="image-text">Connect your voice with the world!</h1>
+            <h1 id="image-text">A good restaurant is like a vacation!</h1>
             <a href="#"><i @click="slideImage = 1" v-if="slideImage != 1" class="fa-solid fa-circle-notch dot"></i></a>
             <a href="#"><i v-if="slideImage == 1" class="fa-solid fa-circle dot"></i></a>
             <a href="#"><i @click="slideImage = 2" v-if="slideImage != 2" class="fa-solid fa-circle-notch dot"></i></a>
@@ -92,7 +92,7 @@
         display: none;
     }
 
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1200px) {
         #image-text{
             font-size: 1.6rem;
         }
