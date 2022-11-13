@@ -1,13 +1,21 @@
 <template>
     <div >
         <div class="table-div">
-            <div v-for="mainType in mainTypes">
+            <div v-for="mainType in mainTypes" style="padding-bottom: 40px">
                 <p v-if="mainType.exist == true" class="table-main-title">{{mainType.name}}</p>
-                <div v-if="mainType.name == 'Drinks' && mainType.exist == true" v-for="subType in drinksTypes">
-                    <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                <div class="row">
+                    <div v-if="mainType.name == 'Drinks' && mainType.exist == true" v-for="subType in drinksTypes" class="col-sm">
+                        <a :href="'#'+subType.type">
+                            <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                        </a>
+                    </div>
                 </div>
-                <div v-if="mainType.name == 'Food' && mainType.exist == true" v-for="subType in foodTypes">
-                    <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                <div class="row">
+                    <div v-if="mainType.name == 'Food' && mainType.exist == true" v-for="subType in foodTypes" class="col-sm">
+                        <a v-if="subType.exist" :href="'#'+subType.type">
+                            <img :src="imageUrl[0]+subType.type+imageUrl[1]" class="product-img">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -260,7 +268,15 @@
     }
 
     .product-img{
-        width: 25%;
-        height: 25%;
+        width: 100%;
+        height: 98%;
+        border-radius: 20px;
+        border: solid 2px white;
+    }
+
+    .product-img:hover{
+        transition: 0.2s ease-in;
+        height: 100%;
+        border: solid 2px var(--dark-gray);
     }
 </style>

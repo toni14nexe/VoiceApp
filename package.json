@@ -21,7 +21,9 @@
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
     "@vitejs/plugin-vue": "^3.0.3",
+    "html5-qrcode": "^2.3.0",
     "vite": "^3.0.9"
   }
 }

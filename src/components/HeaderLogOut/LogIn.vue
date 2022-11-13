@@ -9,6 +9,8 @@
               <div class="pb-5">
 
                 <h2 class="fw-bold mb-2 text-uppercase">Employee Login</h2>
+                <div id="qr-reader" style="width: 100%; height: 100%;"></div>
+
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                 <div class="form-outline mb-4">
@@ -42,6 +44,10 @@
   import MD5 from "crypto-js/md5";
   import sql from "../../assets/sql.js"
 
+  function onScanSuccess(decodedText, decodedResult) {
+    console.log(`Code scanned = ${decodedText}`, decodedResult);
+  }
+
   export default {
     data(){
       return{
@@ -54,6 +60,9 @@
       }
     },
     mounted(){
+      var html5QrcodeScanner = new Html5QrcodeScanner(
+      "qr-reader", { fps: 10, qrbox: 250 });
+      html5QrcodeScanner.render(onScanSuccess);
       if(window.location.search == '?wrongLogIn'){
           this.emailMessage = 'Wrong email or password!'
           window.history.pushState({}, document.title, "/");
